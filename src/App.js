@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import 'App.scss'
+import ContainerBubbleSort from 'containers/ContainerSort/ContainerSort'
+import Layout from 'components/Layout/Layout'
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
+import Tabs from 'components/Tabs/Tabs'
+import tabs from 'constants/tabs'
+import Padding from 'components/Padding/Padding'
+import bubbleSort from 'algorithms/bubbleSort'
+import ContainerGenerateArray from 'containers/ContainerGenerateArray/ContainerGenerateArray'
 
-function App() {
+function App () {
+  const [ array, setArray ] = useState([])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Layout>
+        <Padding value={80} />
+        <ContainerGenerateArray array={array} setArray={setArray} />
+        <Padding value={24} />
+        <Tabs tabs={tabs} />
+        <Switch>
+          <Route exact path='/' render={() =>
+            <ContainerBubbleSort
+              array={array}
+              sortFunction={bubbleSort}
+            />}
+          />
+        </Switch>
+      </Layout>
+      <Padding value={120} />
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

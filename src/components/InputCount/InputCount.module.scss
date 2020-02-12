@@ -1,0 +1,23 @@
+.container {
+  height: 5.2rem;
+  margin-bottom: 1.6rem;
+}
+
+.wrapper {
+  height: 3.2rem;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.label {
+  margin-bottom: 1.6rem;
+}
+
+.input {
+  border: solid 1px darkgrey;
+  border-radius: .4rem;
+  font-size: 1.6rem;
+  width: 10rem;
+  padding: 0 1rem;
+}
