@@ -1,8 +1,9 @@
 .container {
   background-color: white;
+  padding: 2rem;
 }
 
-.row {
+.wrapper {
   overflow: auto;
   white-space: nowrap;
 
@@ -32,3 +33,18 @@
   background-color: #61dafb;
 }
 
+
+.wrapperFull {
+  ul {
+    overflow: hidden;
+    display: flex;
+  }
+
+  .count {
+    display: none;
+  }
+
+  .top {
+    padding: 0;
+  }
+}

@@ -11,7 +11,6 @@ const Tabs = ({ tabs = [] }) => (
                  to={tab.to}
                  className={css.tab}
                  exact
-                 style={{ width: `${100 / tabs.length}%` }}
         >
           {tab.title}
         </NavLink>

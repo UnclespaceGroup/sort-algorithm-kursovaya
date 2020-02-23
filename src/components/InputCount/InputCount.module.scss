@@ -1,6 +1,17 @@
 .container {
   height: 5.2rem;
-  margin-bottom: 1.6rem;
+  margin-bottom: 3rem;
+
+  :global {
+    .input-range__label--value {
+      transform: translateY(-1rem);
+      color: black!important;
+    }
+
+    .input-range__label {
+      font-size: 1.6rem;
+    }
+  }
 }
 
 .wrapper {
@@ -11,7 +22,9 @@
 }
 
 .label {
-  margin-bottom: 1.6rem;
+  margin-bottom: 2.4rem;
+  font-size: 1.4rem;
+  color: dimgray;
 }
 
 .input {

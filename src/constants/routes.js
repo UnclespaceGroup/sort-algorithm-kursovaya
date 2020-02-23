@@ -1,0 +1,6 @@
+export const BUBBLE_SORT = '/'
+export const COCKTAIL_SORT = '/cocktail-sort'
+export const QUICK_SORT = '/quick-sort'
+export const MERGE_SORT = '/merge-sort'
+export const HEAP_SORT = '/heap-sort'
+export const GNOME_SORT = '/gnome-sort'

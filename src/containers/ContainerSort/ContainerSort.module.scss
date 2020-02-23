@@ -1,4 +1,15 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .time {
-  font-size: 1.6rem;
-  padding: 2.4rem 0;
+  font-size: 1.8rem;
+
+  span {
+    color: dimgrey;
+    font-weight: 500;
+    font-size: 4rem;
+  }
 }

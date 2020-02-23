@@ -4,26 +4,28 @@ import { arrayGenerator } from 'utils/arrayGenerator'
 import InputCount from 'components/InputCount/InputCount'
 import css from './ContainerGenerateArray.module.scss'
 import Padding from 'components/Padding/Padding'
+import InputTabs from 'components/InputTabs/InputTabs'
 
 const ContainerGenerateArray = ({ setArray, array = [] }) => {
   const [min, setMin] = useState(0)
   const [max, setMax] = useState(100)
   const [length, setLength] = useState(1000)
   const getGenerateArray = async () => {
+    setArray([])
     const _array = await arrayGenerator(length, min, max)
     setArray(_array)
   }
   return (
     <>
       <div className={css.form}>
-        <div >
-          <InputCount
-            min={0}
-            max={10000}
+        <div>
+          <InputTabs
             onChange={setLength}
             label={'Длина массива'}
             value={length}
-            step={1000}
+            tabs={[
+              100, 1000, 10000, 100000
+            ]}
           />
           <InputCount
             min={-1000}
@@ -43,12 +45,14 @@ const ContainerGenerateArray = ({ setArray, array = [] }) => {
         <Padding value={24} />
         <button className={'btn-generate'} onClick={() => getGenerateArray()}>Сгенерировать</button>
       </div>
-
-      <h2>Исходный массив</h2>
-      {(array.length > 0) && <SectionArraysList
-        array={array}
-        onClick={() => getGenerateArray()}
-      />}
+      {(array.length > 0) &&
+      <>
+        <h2>Исходный массив</h2>
+        <SectionArraysList
+          array={array}
+          onClick={() => getGenerateArray()}
+        />
+      </>}
     </>
   )
 }

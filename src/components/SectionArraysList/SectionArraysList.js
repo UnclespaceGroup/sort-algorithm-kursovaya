@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import css from './SectionArraysList.module.scss'
 import { findMax, findMin } from 'utils/findFunctions'
+import InputTabs from 'components/InputTabs/InputTabs'
+import Padding from 'components/Padding/Padding'
 
-const SectionArraysList = ({ array = [], onClick }) => {
+const SectionArraysList = ({ array = [], onClick, btnText = 'Сгенерировать' }) => {
+  const viewList = [ 'Полный вид', 'Подробный вид' ]
+  const [ view, setView ] = useState(viewList[0])
   const maxValue = findMax(array)
   const minValue = findMin(array)
   const range = Math.abs(maxValue) + Math.abs(minValue)
@@ -11,9 +15,17 @@ const SectionArraysList = ({ array = [], onClick }) => {
     return (value + Math.abs(minValue)) * 100 / range
   }
 
-  return array.length ?
+  const fullList = view === viewList[0]
+
+  return (array.length > 0) ?
     <div className={css.container}>
-      <div className={css.row}>
+      <Padding value={24} />
+      <InputTabs
+        tabs={viewList}
+        value={view}
+        onChange={setView}
+      />
+      <div className={fullList ? css.wrapperFull : css.wrapper}>
         <ul>
           {
             Array.isArray(array) && array.map((item, key) => (
@@ -28,6 +40,6 @@ const SectionArraysList = ({ array = [], onClick }) => {
         </ul>
       </div>
     </div>
-    : <button className={'btn-generate'} onClick={onClick}>Сгенерировать</button>
+    : <button className={'btn-generate'} onClick={onClick}>{btnText}</button>
 }
 export default React.memo(SectionArraysList)
