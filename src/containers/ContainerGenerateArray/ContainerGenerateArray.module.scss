@@ -6,7 +6,12 @@
 
 .form {
   background-color: white;
-  padding: 2rem 5rem;
-  width: 60rem;
   border-radius: .4rem;
+
+  hr {
+    border-color: #fefefe;
+    opacity: 0.5;
+    border-bottom: none;
+    margin: 1rem 0;
+  }
 }

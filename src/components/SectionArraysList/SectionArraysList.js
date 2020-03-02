@@ -19,7 +19,6 @@ const SectionArraysList = ({ array = [], onClick, btnText = 'Сгенериро�
 
   return (array.length > 0) ?
     <div className={css.container}>
-      <Padding value={24} />
       <InputTabs
         tabs={viewList}
         value={view}

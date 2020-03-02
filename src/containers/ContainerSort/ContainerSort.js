@@ -8,10 +8,10 @@ const ContainerSort = ({ sortFunction = () => {}, array = [] }) => {
   const location = useLocation()
   const [sortedArray, setSortedArray] = useState([])
 
-  const getSortedArray = async () => {
+  const getSortedArray = () => {
     const arr = array.slice()
     const startTime = new Date().getTime()
-    const _sortedArray = await sortFunction(arr)
+    const _sortedArray = sortFunction(arr)
     const endTime = new Date().getTime()
     setTime(endTime - startTime)
     setSortedArray(_sortedArray)
@@ -26,7 +26,8 @@ const ContainerSort = ({ sortFunction = () => {}, array = [] }) => {
 
   useMemo(() => {
     setSortedArray([])
-  }, [location, setSortedArray])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location])
 
   return (
     <>

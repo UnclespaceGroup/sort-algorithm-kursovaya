@@ -18,14 +18,20 @@ import gnomeSort from 'algorithms/naturalSort'
 function App () {
   const [array, setArray] = useState([])
   const isArray = array.length > 0
+
   return (
     <BrowserRouter>
       <Layout>
         <Padding value={80} />
-        <ContainerGenerateArray array={array} setArray={setArray} />
+        <ContainerGenerateArray
+          array={array}
+          setArray={setArray}
+        />
         <Padding value={24} />
         {isArray && <Tabs tabs={tabs} />}
         <Padding value={80} />
+
+        {isArray &&
         <Switch>
           <Route exact path={BUBBLE_SORT} render={() =>
             <ContainerSort
@@ -63,7 +69,7 @@ function App () {
               sortFunction={gnomeSort}
             />}
           />
-        </Switch>
+        </Switch>}
       </Layout>
       <Padding value={120} />
     </BrowserRouter>

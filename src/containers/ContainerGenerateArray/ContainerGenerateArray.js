@@ -10,15 +10,22 @@ const ContainerGenerateArray = ({ setArray, array = [] }) => {
   const [min, setMin] = useState(0)
   const [max, setMax] = useState(100)
   const [length, setLength] = useState(1000)
+
   const getGenerateArray = async () => {
-    setArray([])
     const _array = await arrayGenerator(length, min, max)
     setArray(_array)
   }
+
+  const isArray = array.length > 0
+
   return (
     <>
       <div className={css.form}>
+        <h2>
+          Генерация массива
+        </h2>
         <div>
+          <hr />
           <InputTabs
             onChange={setLength}
             label={'Длина массива'}
@@ -27,6 +34,7 @@ const ContainerGenerateArray = ({ setArray, array = [] }) => {
               100, 1000, 10000, 100000
             ]}
           />
+          <hr />
           <InputCount
             min={-1000}
             max={1000}
@@ -34,6 +42,7 @@ const ContainerGenerateArray = ({ setArray, array = [] }) => {
             label={'Нижний предел'}
             value={min}
           />
+          <hr />
           <InputCount
             min={-1000}
             max={1000}
@@ -43,17 +52,27 @@ const ContainerGenerateArray = ({ setArray, array = [] }) => {
           />
         </div>
         <Padding value={24} />
-        <button className={'btn-generate'} onClick={() => getGenerateArray()}>Сгенерировать</button>
       </div>
-      {(array.length > 0) &&
+
+      {!isArray && <button className={'btn-generate'} onClick={() => getGenerateArray()}>
+        Сгенерировать
+      </button>}
+
+      {(isArray) &&
       <>
-        <h2>Исходный массив</h2>
+        <h2 className={'flex'}>
+          Исходный массив
+          <button className={'btn-generate'} onClick={() => getGenerateArray()}>
+            Сгенерировать заново
+          </button>
+        </h2>
         <SectionArraysList
           array={array}
           onClick={() => getGenerateArray()}
         />
       </>}
+      <Padding value={24} />
     </>
   )
 }
-export default React.memo(ContainerGenerateArray)
+export default ContainerGenerateArray
